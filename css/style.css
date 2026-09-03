@@ -1,0 +1,48 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+body{
+    background-color: #00080F;
+}
+/* header styling */
+ header{
+    background-color: #00090F;
+    color: white;
+    border-bottom: rgba(255, 250, 240, 0.169) solid 0.02px;
+}
+
+.internal-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.logo img{
+    max-width: 300px;
+}
+.navigation  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.navigation a{
+    text-decoration: none;
+    color: white;
+}
+.myWatchlist{
+    background-color: #00090F;
+    padding: 7px ;
+    border-radius: 20px ;
+    border: rgba(255, 255, 255, 0.096) solid ;
+}
+
+.active {
+ background-color: rgb(255, 132, 0);
+ padding: 10px 15px;
+ border-radius: 20px ;
+ transition: 0.3s;
+ color: rgba(0, 0, 0, 0.694);
+}
