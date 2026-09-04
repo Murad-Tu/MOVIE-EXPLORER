@@ -46,3 +46,34 @@ body{
  transition: 0.3s;
  color: rgba(0, 0, 0, 0.694);
 }
+
+.findYourMovie{
+    background-image: url('../resources/');
+    width: 70%;
+    color: white;
+    margin: 20px 0;
+    line-height:1.3;
+    border: rgba(255, 250, 240, 0.169) solid 0.02px;
+    margin: 20px 20px;
+    padding: 20px;
+}
+
+.findText h1{
+    color: rgb(255, 183, 0);
+    font-size: 50px;
+    font-weight: 900;
+}
+.findText p{
+    color: rgb(160, 163, 166);
+}
+.internalFindYourMovie{
+    width: 70%;
+    margin: 0 auto;
+}
+.searchBtn input{
+    padding: 10px 200px 10px 30px;
+    border-radius: 10px;
+}
+
+
+
