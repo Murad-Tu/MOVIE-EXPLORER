@@ -4,57 +4,390 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>JS For Beginners</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <meta name="description" content="Movie Explorer – Search millions of movies, discover popular and top-rated films, and build your personal watchlist." />
+    <title>Movie Explorer – Find Your Favorite Movie</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-   <header>
-    <div class="internal-wrapper">
-      <div class="logo"><img src="resources/logo.png" alt=""></div>
-      <nav class="navigation">
-          <a href="#" class="active">Home</a>
-          <a href="">Popular</a>
-          <a href="">Top rated</a>
-          <a href="">Upcoming</a>
-        
-      </nav>
-      <div class="myWatchlist">
-        <span style="color:red;"><i class="fa-regular fa-heart"></i></span>
-        <span>my watchlist</span>
-        <span class="count" style="background-color: rgb(255, 174, 0); border-radius: 50%;">5</span>
-      </div>
-      <div class="darkMode">
-        <span><i class="fa-regular fa-moon"></i></span> 
-       <span><i class="fa-solid fa-toggle-on"></i></span> 
-      </div>
-    </div>
-   </header>
-   <section class="findYourMovie">
-    <div class="internalFindYourMovie">
-      <div class="findText">
-        <h3>Find Your Next</h3>
-        <h1>Favorite Movie</h1>
-        <p>seaarch millions of movies and add them to your watchlist.</p>
-      </div>
-      <div class="searchBtn">
-        <span style="color: black; bcgc"><i class="fa-solid fa-magnifying-glass"></i></span>
-        <input type="text" placeholder="search for movie...">
-        <span class="search"><button type="submit">search</button></span>
-      </div>
-      <div class="categories">
-        <a href="">All</a>
-        <a href="">Action</a>
-        <a href="">Adventures</a>
-        <a href="">Comedy</a>
-        <a href="">Drama</a>
-        <a href="">Horror</a>
-        <a href="">Sci-fi</a>
-        <a href="">Romance</a>
 
-      </div>
-    </div>
-   </section>
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-xl">
+
+          <!-- Logo -->
+          <a class="navbar-brand" href="#">
+            <img src="./resources/logo.png" alt="Movie Explorer Logo" class="site-logo" />
+          </a>
+
+          <!-- Mobile: hamburger -->
+          <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars text-white fs-5"></i>
+          </button>
+
+          <!-- Collapsible nav -->
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto gap-lg-1 mt-3 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active-pill" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-plain" href="#popular-movies">Popular</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-plain" href="#top-rated">Top Rated</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-plain" href="#">Upcoming</a>
+              </li>
+            </ul>
+
+            <!-- Watchlist pill + Dark Mode (desktop) -->
+            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+              <button class="watchlist-pill d-flex align-items-center gap-2">
+                <i class="fa-solid fa-heart text-danger"></i>
+                <span class="watchlist-label">My Watchlist</span>
+                <span class="watchlist-count">5</span>
+              </button>
+              <div class="dark-toggle d-flex align-items-center gap-1">
+                <i class="fa-regular fa-moon text-white"></i>
+                <i class="fa-solid fa-toggle-on text-white toggle-icon"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <!-- ==================== MAIN ==================== -->
+    <main>
+      <div class="container-xl py-4">
+        <div class="row g-4">
+
+          <!-- ===== LEFT COLUMN ===== -->
+          <div class="col-12 col-lg-8">
+
+            <!-- HERO SECTION -->
+            <section class="hero-section mb-4" aria-label="Search movies">
+              <div class="hero-inner p-4 p-md-5 rounded-3">
+
+                <p class="hero-subtitle mb-0">Find Your Next</p>
+                <h1 class="hero-title mb-2">Favorite Movie</h1>
+                <p class="hero-description mb-4">Search millions of movies and add them to your watchlist.</p>
+
+                <!-- Search bar -->
+                <div class="search-bar d-flex align-items-center mb-4">
+                  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                  <input type="text" id="searchInput" class="search-input flex-grow-1"
+                    placeholder="Search for a movie..." autocomplete="off" />
+                  <button class="search-btn" type="button">Search</button>
+                </div>
+
+                <!-- Genre filter pills -->
+                <div class="genre-filters d-flex flex-wrap gap-2">
+                  <button class="genre-pill active-genre">All</button>
+                  <button class="genre-pill">Action</button>
+                  <button class="genre-pill">Adventure</button>
+                  <button class="genre-pill">Comedy</button>
+                  <button class="genre-pill">Drama</button>
+                  <button class="genre-pill">Horror</button>
+                  <button class="genre-pill">Sci-Fi</button>
+                  <button class="genre-pill">Romance</button>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- POPULAR MOVIES -->
+            <section id="popular-movies" class="movies-section mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title">
+                  <i class="fa-solid fa-star text-warning me-2"></i>Popular Movies
+                </h2>
+                <a href="#" class="view-all-link">View All</a>
+              </div>
+
+              <div class="row g-3" id="popularMoviesGrid">
+
+                <!-- Card 1 -->
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2">
+                  <article class="movie-card h-100">
+                    <div class="movie-poster-wrap">
+                      <img src="https://image.tmdb.org/t/p/w300/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                        alt="Dune: Part Two" class="movie-poster" loading="lazy" />
+                    </div>
+                    <div class="movie-info p-2">
+                      <h3 class="movie-title">Dune: Part Two</h3>
+                      <p class="movie-year">2024</p>
+                      <p class="movie-rating"><i class="fa-solid fa-star text-warning"></i> 8.6</p>
+                      <button class="save-btn w-100"><i class="fa-solid fa-plus me-1"></i>Save</button>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2">
+                  <article class="movie-card h-100">
+                    <div class="movie-poster-wrap">
+                      <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+                        alt="Spider-Man: No Way Home" class="movie-poster" loading="lazy" />
+                    </div>
+                    <div class="movie-info p-2">
+                      <h3 class="movie-title">Spider-Man: No Way Home</h3>
+                      <p class="movie-year">2021</p>
+                      <p class="movie-rating"><i class="fa-solid fa-star text-warning"></i> 8.2</p>
+                      <button class="save-btn w-100"><i class="fa-solid fa-plus me-1"></i>Save</button>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2">
+                  <article class="movie-card h-100">
+                    <div class="movie-poster-wrap">
+                      <img src="https://image.tmdb.org/t/p/w300/74xTEgt7R36Fpooo50r9T25onhq.jpg"
+                        alt="The Batman" class="movie-poster" loading="lazy" />
+                    </div>
+                    <div class="movie-info p-2">
+                      <h3 class="movie-title">The Batman</h3>
+                      <p class="movie-year">2022</p>
+                      <p class="movie-rating"><i class="fa-solid fa-star text-warning"></i> 7.8</p>
+                      <button class="save-btn w-100"><i class="fa-solid fa-plus me-1"></i>Save</button>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2">
+                  <article class="movie-card h-100">
+                    <div class="movie-poster-wrap">
+                      <img src="https://image.tmdb.org/t/p/w300/ptpr0kGAckfQkJeJIt8st5dglvd.jpg"
+                        alt="Oppenheimer" class="movie-poster" loading="lazy" />
+                    </div>
+                    <div class="movie-info p-2">
+                      <h3 class="movie-title">Oppenheimer</h3>
+                      <p class="movie-year">2023</p>
+                      <p class="movie-rating"><i class="fa-solid fa-star text-warning"></i> 8.7</p>
+                      <button class="save-btn w-100"><i class="fa-solid fa-plus me-1"></i>Save</button>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2">
+                  <article class="movie-card h-100">
+                    <div class="movie-poster-wrap">
+                      <img src="https://image.tmdb.org/t/p/w300/vblDDuHB8a2AnsFJ1BAVSxXv8Xp.jpg"
+                        alt="John Wick: Chapter 4" class="movie-poster" loading="lazy" />
+                    </div>
+                    <div class="movie-info p-2">
+                      <h3 class="movie-title">John Wick: Chapter 4</h3>
+                      <p class="movie-year">2023</p>
+                      <p class="movie-rating"><i class="fa-solid fa-star text-warning"></i> 7.9</p>
+                      <button class="save-btn w-100"><i class="fa-solid fa-plus me-1"></i>Save</button>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2">
+                  <article class="movie-card h-100">
+                    <div class="movie-poster-wrap">
+                      <img src="https://image.tmdb.org/t/p/w300/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
+                        alt="Avatar: The Way of Water" class="movie-poster" loading="lazy" />
+                    </div>
+                    <div class="movie-info p-2">
+                      <h3 class="movie-title">Avatar: The Way of Water</h3>
+                      <p class="movie-year">2022</p>
+                      <p class="movie-rating"><i class="fa-solid fa-star text-warning"></i> 7.6</p>
+                      <button class="save-btn w-100"><i class="fa-solid fa-plus me-1"></i>Save</button>
+                    </div>
+                  </article>
+                </div>
+
+              </div><!-- /popular row -->
+            </section>
+
+            <!-- TOP RATED LIST -->
+            <section id="top-rated" class="movies-section">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title">Top Rated</h2>
+                <a href="#" class="view-all-link">View All</a>
+              </div>
+
+              <div class="d-flex flex-column gap-2">
+
+                <!-- Item 1 -->
+                <div class="top-rated-item d-flex align-items-center gap-3 p-2 rounded-3">
+                  <img src="https://image.tmdb.org/t/p/w92/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
+                    alt="The Shawshank Redemption" class="top-rated-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="top-rated-title">The Shawshank Redemption</h3>
+                    <p class="top-rated-meta">1994 · Drama</p>
+                    <p class="movie-rating mb-0"><i class="fa-solid fa-star text-warning"></i> 9.3</p>
+                  </div>
+                  <button class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="top-rated-item d-flex align-items-center gap-3 p-2 rounded-3">
+                  <img src="https://image.tmdb.org/t/p/w92/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
+                    alt="Inception" class="top-rated-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="top-rated-title">Inception</h3>
+                    <p class="top-rated-meta">2010 · Sci-Fi</p>
+                    <p class="movie-rating mb-0"><i class="fa-solid fa-star text-warning"></i> 8.6</p>
+                  </div>
+                  <button class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="top-rated-item d-flex align-items-center gap-3 p-2 rounded-3">
+                  <img src="https://image.tmdb.org/t/p/w92/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+                    alt="The Dark Knight" class="top-rated-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="top-rated-title">The Dark Knight</h3>
+                    <p class="top-rated-meta">2008 · Action</p>
+                    <p class="movie-rating mb-0"><i class="fa-solid fa-star text-warning"></i> 9.0</p>
+                  </div>
+                  <button class="bookmark-btn text-danger"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+              </div>
+            </section>
+
+          </div><!-- /left col -->
+
+          <!-- ===== RIGHT COLUMN – WATCHLIST SIDEBAR ===== -->
+          <div class="col-12 col-lg-4">
+            <aside class="watchlist-sidebar rounded-3 p-3">
+
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fa-solid fa-heart text-danger fs-5"></i>
+                <h2 class="watchlist-title mb-0">My Watchlist</h2>
+                <span class="wl-count-badge ms-1">(5)</span>
+              </div>
+
+              <div class="d-flex flex-column gap-2">
+
+                <!-- WL Item 1 -->
+                <div class="watchlist-item d-flex align-items-center gap-3 p-2 rounded-2">
+                  <img src="https://image.tmdb.org/t/p/w92/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
+                    alt="Inception" class="watchlist-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="watchlist-movie-title">Inception</h3>
+                    <p class="watchlist-movie-meta mb-0">
+                      <i class="fa-solid fa-star text-warning"></i> 8.8 &nbsp; 2010
+                    </p>
+                  </div>
+                  <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- WL Item 2 -->
+                <div class="watchlist-item d-flex align-items-center gap-3 p-2 rounded-2">
+                  <img src="https://image.tmdb.org/t/p/w92/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+                    alt="The Dark Knight" class="watchlist-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="watchlist-movie-title">The Dark Knight</h3>
+                    <p class="watchlist-movie-meta mb-0">
+                      <i class="fa-solid fa-star text-warning"></i> 9.0 &nbsp; 2008
+                    </p>
+                  </div>
+                  <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- WL Item 3 -->
+                <div class="watchlist-item d-flex align-items-center gap-3 p-2 rounded-2">
+                  <img src="https://image.tmdb.org/t/p/w92/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+                    alt="Interstellar" class="watchlist-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="watchlist-movie-title">Interstellar</h3>
+                    <p class="watchlist-movie-meta mb-0">
+                      <i class="fa-solid fa-star text-warning"></i> 8.6 &nbsp; 2014
+                    </p>
+                  </div>
+                  <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- WL Item 4 -->
+                <div class="watchlist-item d-flex align-items-center gap-3 p-2 rounded-2">
+                  <img src="https://image.tmdb.org/t/p/w92/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
+                    alt="The Matrix" class="watchlist-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="watchlist-movie-title">The Matrix</h3>
+                    <p class="watchlist-movie-meta mb-0">
+                      <i class="fa-solid fa-star text-warning"></i> 8.7 &nbsp; 1999
+                    </p>
+                  </div>
+                  <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- WL Item 5 -->
+                <div class="watchlist-item d-flex align-items-center gap-3 p-2 rounded-2">
+                  <img src="https://image.tmdb.org/t/p/w92/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+                    alt="Forrest Gump" class="watchlist-poster" loading="lazy" />
+                  <div class="flex-grow-1">
+                    <h3 class="watchlist-movie-title">Forrest Gump</h3>
+                    <p class="watchlist-movie-meta mb-0">
+                      <i class="fa-solid fa-star text-warning"></i> 8.8 &nbsp; 1994
+                    </p>
+                  </div>
+                  <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+              </div>
+
+              <!-- Clear button -->
+              <button class="clear-watchlist-btn w-100 mt-3">
+                <i class="fa-solid fa-trash-can me-2"></i>Clear Watchlist
+              </button>
+
+            </aside>
+          </div><!-- /right col -->
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </main>
+
+    <!-- ==================== MOBILE BOTTOM NAV ==================== -->
+    <nav class="mobile-bottom-nav d-flex d-lg-none justify-content-around align-items-center">
+      <a href="#" class="bottom-nav-item active-bottom">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="#" class="bottom-nav-item">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search</span>
+      </a>
+      <a href="#" class="bottom-nav-item">
+        <i class="fa-regular fa-heart"></i>
+        <span>Watchlist</span>
+      </a>
+      <a href="#" class="bottom-nav-item">
+        <i class="fa-solid fa-border-all"></i>
+        <span>Categories</span>
+      </a>
+      <a href="#" class="bottom-nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>
